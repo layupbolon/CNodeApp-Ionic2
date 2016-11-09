@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content #listContent>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+    pullingIcon="arrow-dropdown"
+    pullingText="下拉刷新"
+    refreshingSpinner="circles"
+    refreshingText="正在加载...">
+    </ion-refresher-content>
+    </ion-refresher>
+    <ion-list>
+        <!--添加detail-none 去除ion-item右边的箭头-->
+        <a ion-item detail-none (click)="goto(topic.id)"  *ngFor="let topic of topics">
+            <div class="listitem_up">
+                <Icon [iconType]="topic" [classType]=true></Icon>
+                <h4>{{topic.title}}</h4>
+            </div>
+            <div class="listitem_down">
+                <div class="left">
+                    <div class="userImage">
+                        <img src="{{topic.author.avatar_url}}">
+                    </div>
+                    <div class="autherInfo">
+                        <p>{{topic.author.loginname}}</p>
+                        <p>{{topic.create_at | dateFormatPipe}}</p>
+                    </div>
+                </div>
+                <div class="right">
+                    <p>{{topic.reply_count}}/{{topic.visit_count}}</p>
+                    <p>{{topic.last_reply_at | dateFormatPipe}}</p>
+                </div>
+            </div>
+        </a>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles"
+    loadingText="正在加载..."></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

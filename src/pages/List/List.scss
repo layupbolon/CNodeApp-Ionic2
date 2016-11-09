@@ -1,0 +1,64 @@
+.listitem_up {
+  height: 2rem;
+}
+
+.listitem_up .icon {
+  line-height: 28px;
+  float: left;
+  width: 27px;
+  height: 27px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.listitem_up h4 {
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 27px;
+  overflow: hidden;
+  width: 85%;
+  height: 27px;
+  padding-left: 8px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #2c3e50;
+}
+
+.listitem_down {
+  width: 100%;
+  height: 3.2rem;
+  margin-top: 5px;
+}
+
+.userImage{
+  display: inline-block;
+  float: left;
+  width:12%;
+  height:12%;
+  margin-top: 3px;
+}
+
+.userImage img{
+  border-radius: 50%;
+}
+
+.listitem_down .autherInfo {
+  font-size: 12px;
+  float: left;
+  margin-left: 15px;
+}
+
+.listitem_down .autherInfo p {
+  line-height: 20px;
+  height: 20px;
+}
+
+.listitem_down .right{
+  float:right;
+  text-align: right;
+}
+
+.listitem_down .right p {
+  line-height: 20px;
+  height: 20px;
+}

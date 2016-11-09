@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>详情</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content *ngIf="dataSource" class="topicDetail">
+    <div class="topicTopInfo">
+        <div class="userImage">
+            <img src="{{dataSource.author.avatar_url}}">
+        </div>
+        <div class="authorInfo">
+            <p>
+                <span>{{dataSource.author.loginname}}</span>&nbsp;
+                <span>{{dataSource.create_at | dateFormatPipe}}</span>
+            </p>
+            <p>
+                阅读：{{dataSource.visit_count}} 回复：{{dataSource.reply_count}}
+            </p>
+        </div>
+        <Icon [iconType]="dataSource" [classType]=false></Icon>
+    </div>
+    <div class="topicTitle"> {{dataSource.title}}</div>
+    <div class="content markdown-body" [innerHTML]="dataSource.content"></div>
+    <div class="topicReply">共<span>{{dataSource.reply_count}}</span>条回复</div>
+    <ul>
+        <li *ngFor="let item of dataSource.replies,let i = index">
+            <div class="replyTop">
+                <div class="replyAuthorImage">
+                    <div class="userImage">
+                        <img src="{{item.author.avatar_url}}">
+                    </div>
+                </div>
+                <div class="replyInfo">
+                    <div class="left">
+                        <span>{{item.author.loginname}}</span> {{item.create_at | dateFormatPipe}}
+                    </div>
+                    <div class="floor">#{{i + 1}}</div>
+                </div>
+                <div class="replyContent content markdown-body" [innerHTML]="item.content"></div>
+            </div>
+            <i class="replyDown">
+                <i class="iconfont icon-dianzan"></i>
+                <i class="iconfont icon-huifu"></i>
+            </i>
+        </li>
+    </ul>
+</ion-content>
